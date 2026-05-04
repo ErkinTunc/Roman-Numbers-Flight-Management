@@ -38,6 +38,7 @@ public class RomanNumber extends Number implements Comparable<Number> {
     public RomanNumber(int value) {
         this.value = value;
         this.roman = RomanConverter.getRomanFromNumber(this.value);
+
     }
 
     /**
@@ -58,14 +59,17 @@ public class RomanNumber extends Number implements Comparable<Number> {
         String normalizedRoman = roman.trim();
 
         // TODO : SOLVE INCONSISTENCY BUG
-        // int parsedValue = RomanConverter.getNumberFromRoman(normalizedRoman);
+        if (!RomanConverter.initialization) {
+            int parsedValue = RomanConverter.getNumberFromRoman(normalizedRoman);
 
-        // if (value != parsedValue) {
-        //     throw new IllegalArgumentException("Inconsistent value and roman number");
-        // }
+            if (value != parsedValue) {
+                throw new IllegalArgumentException("Inconsistent value and roman number");
+            }
+        }
 
         this.value = value;
         this.roman = normalizedRoman;
+
     }
 
     // ----------------- Getters and Setters -------------

@@ -6,6 +6,9 @@ import java.util.regex.Pattern;
 
 public class RomanConverter {
 
+    // Initialization flag to prevent recursive calls during construction
+    public static boolean initialization = true;
+
     // Table des symboles
     private static final Collection<RomanNumber> SYMBOLS = new ArrayList<>();
     static {
@@ -22,6 +25,8 @@ public class RomanConverter {
         SYMBOLS.add(new RomanNumber(5, "V"));
         SYMBOLS.add(new RomanNumber(4, "IV"));
         SYMBOLS.add(new RomanNumber(1, "I"));
+
+        initialization = false;
     }
 
     // Expression régulière de validation | (Regex for validation)
