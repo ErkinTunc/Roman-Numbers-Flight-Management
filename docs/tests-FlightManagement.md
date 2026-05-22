@@ -36,8 +36,9 @@ It checks that:
 - two flights with different numbers are not equal;
 - a `HashSet` distinguishes two flights with the same business number but different UUIDs;
 - `setCompagnie(...)` refuses assigning a flight to a company if another flight with the same number already exists.
+----
 
-Additional unit tests
+###### Additional unit tests
 
 - `org.uca.aeroport`:
   - `AeroportTest`: tests constructor initialization, validation of invalid code/name/city and `toString()` content.
