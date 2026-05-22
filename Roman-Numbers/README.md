@@ -4,6 +4,8 @@
 
 [Sujet](https://loriscroce.frama.io/enseignement/genie_logiciel_l3/tp3) , [Guide JUnit](https://docs.junit.org/5.7.2/user-guide/)
 
+## Changes
+
 1. Added Testing (Tests de réussite,Tests d’échec,Tests de validité)
    > ./gradlew test
 2. Implemented toRoman() et fromRoman() , passes all the tests
