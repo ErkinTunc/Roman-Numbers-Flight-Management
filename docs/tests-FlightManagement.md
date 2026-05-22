@@ -36,3 +36,19 @@ It checks that:
 - two flights with different numbers are not equal;
 - a `HashSet` distinguishes two flights with the same business number but different UUIDs;
 - `setCompagnie(...)` refuses assigning a flight to a company if another flight with the same number already exists.
+
+Additional unit tests
+
+- `org.uca.aeroport`:
+  - `AeroportTest`: tests constructor initialization, validation of invalid code/name/city and `toString()` content.
+  - `VilleTest`: tests basic behavior of the `Ville` class and its `toString()` method.
+  - `EtapeTest`: verifies duration computation and handling of missing dates in `Etape`.
+  - `EscaleTest`: checks that `Escale` correctly initializes departure, arrival and associated airport.
+  - `NullEscaleTest`: verifies that `NullEscale.getInstance()` is a singleton and behaves as a valid `Escale`.
+- `org.uca.reservation`:
+  - `ReservationTest`: extended to cover valid state transitions (create → pay → confirm, create → cancel) and forbidden transitions that must throw `TransitionInterditeException`.
+  - `ClientTest`: checks getters/setters, the unmodifiable reservations list, and the behavior of `addReservation` / `removeReservation`.
+  - `TarifEcoTest`, `TarifBusinessTest`, `TarifPromoTest`: verify that each pricing strategy applies the correct price calculation.
+  - `ReservationFactoryTest`: ensures that `ReservationFactory` uses the correct final price depending on the chosen `PolitiqueTarif` (eco, business or promo).
+
+
