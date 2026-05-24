@@ -18,7 +18,7 @@
 
 ---
 
-#### What we have learned
+### What we have learned
 
 - How to use _Gradle_ for building, running and testing Java applications.
 - How to write unit tests using _JUnit 5_.
