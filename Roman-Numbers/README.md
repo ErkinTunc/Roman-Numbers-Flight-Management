@@ -4,6 +4,10 @@
 
 [Sujet](https://loriscroce.frama.io/enseignement/genie_logiciel_l3/tp3) , [Guide JUnit](https://docs.junit.org/5.7.2/user-guide/)
 
+This project implements a Roman number converter.
+
+It provides conversion between Arabic and Roman numbers, validates incorrect inputs, and includes unit tests covering successful cases, failure cases, and consistency checks.
+
 ## Changes
 
 1. Added Testing (Tests de réussite,Tests d’échec,Tests de validité)
