@@ -2,12 +2,11 @@
 
 **Génie Logiciel L3 - TP3/TP4**
 
-- [TP3- Roman Numbers](/Roman-Numbers/README.md)
+This repository contains two Java projects developed for the L3 Software Engineering course.  
 
-  A converter between Roman and Arabic numbers, with unit testing and validation.
+- [TP3- Roman Numbers](/Roman-Numbers/README.md) : A converter between Roman and Arabic numbers, with unit testing and validation.
 
-- [TP4 - Flight and Reservation Management](/FlightManagement/README.md)
-  A flight and reservation management system modeling airlines, flights, airports, stopovers, passengers, payments, pricing strategies and reservation states.
+- [TP4 - Flight and Reservation Management](/FlightManagement/README.md) : A flight and reservation management system modeling airlines, flights, airports, stopovers, passengers, payments, pricing strategies and reservation states.
 
 ---
 
