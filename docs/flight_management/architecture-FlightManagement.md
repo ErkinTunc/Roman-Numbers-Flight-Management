@@ -160,3 +160,16 @@ This centralizes reservation creation and keeps the constructor controlled. The 
 - creating a reservation with its client, passenger and flight.
 
 By default, the factory uses the economy pricing policy.
+
+---
+
+### Q6
+La solution peut être interprétée comme une application du pattern Flyweight.
+Le trajet représente l’état intrinsèque partagé entre plusieurs vols réguliers :
+la liste ordonnée des étapes et les aéroports. Le vol représente l’état extrinsèque :
+la date de départ, les réservations, l’état du vol et les informations propres à une
+occurrence concrète.
+
+Pour éviter les effets de bord liés au partage, Trajet doit être immuable. Sa liste
+d’étapes est copiée à la construction et exposée sous forme non modifiable. Ainsi,
+plusieurs vols peuvent partager le même Trajet sans risque d’aliasing dangereux.
