@@ -60,6 +60,7 @@ It checks that:
 
 - flight duration is calculated from departure and arrival dates;
 - missing departure or arrival dates return `null` for the duration;
+- setters correctly define flight information;
 - `setCompagnie(...)` adds the flight to the company collection;
 - `setCompagnie(null)` removes the flight from its previous company;
 - changing a flight's company updates both the old and new company collections;
@@ -70,7 +71,9 @@ It checks that:
 - the escale collection returned by `getEscales()` is unmodifiable;
 - a flight can remove an escale;
 - adding a null escale throws an exception;
-- a flight with no escale exposes an empty escale collection.
+- a flight with no escale exposes an empty escale collection;
+- two regular flights can share the same `Trajet`;
+- a flight can compute the real arrival and departure times of route steps from its departure datetime.
 
 ---
 
@@ -100,6 +103,35 @@ It checks that:
 - an escale must have an airport;
 - `setAeroport(null)` is rejected.
 
+### EtapeTrajetTest
+
+`EtapeTrajetTest` verifies the relative steps of a shared route.
+
+It checks that:
+
+- the constructor initializes order, airport, arrival offset and departure offset;
+- stop duration is calculated from relative arrival and departure offsets;
+- stop duration is zero when one offset is missing;
+- negative order is rejected;
+- null airport is rejected;
+- negative arrival or departure offsets are rejected;
+- departure offset cannot be before arrival offset.
+
+### TrajetTest
+
+`TrajetTest` verifies the route model used by regular flights.
+
+It checks that:
+
+- the constructor initializes the route code and steps;
+- null or blank route code is rejected;
+- a route must contain at least two steps;
+- two steps cannot have the same order;
+- the step list returned by `getEtapes()` is non-modifiable;
+- steps are sorted by order;
+- `getPremiereEtape()` returns the first step;
+- `getDerniereEtape()` returns the last step.
+
 ---
 
 ## Reservation model
@@ -118,15 +150,30 @@ It checks that:
 
 ### PassagerTest
 
-`PassagerTest` should verify the behavior of the `Passager` class.
+`PassagerTest` verifies the creation and validation of passengers.
 
-It should check that:
+It checks that:
 
-- the constructor initializes name, passport number, age and phone number;
-- immutable fields cannot be changed after construction;
-- `setTelephone(...)` updates the phone number.
+- the constructor initializes last name, first name, age and passport number;
+- `setTelephone(...)` updates the phone number;
+- null or blank last name is rejected;
+- null or blank first name is rejected;
+- negative age is rejected;
+- null or blank passport number is rejected;
+- null or blank phone number is rejected.
 
-At the moment, this test class still needs to be implemented.
+### PaiementTest
+
+`PaiementTest` verifies the payment lifecycle.
+
+It checks that:
+
+- a new payment starts with status `EN_ATTENTE`;
+- `debiter()` changes the payment status to `DEBITE`;
+- `rembourser()` changes the payment status to `REMBOURSE`;
+- a negative amount is rejected;
+- debiting twice is forbidden;
+- refunding before debit is forbidden.
 
 ### ReservationTest
 
@@ -140,6 +187,7 @@ It checks that:
 - a new reservation starts in `EN_ATTENTE`;
 - the reservation is added to the client's reservation list;
 - `payer()` changes the state to `PAYEE`;
+- `payer()` debits the payment;
 - `confirmer()` after payment changes the state to `CONFIRMEE`;
 - `annuler()` from `EN_ATTENTE` changes the state to `ANNULEE`;
 - confirming from `EN_ATTENTE` throws `TransitionInterditeException`;
@@ -161,24 +209,26 @@ It checks that:
 
 ## Pricing and reservation factory
 
-#### TarifEcoTest
+### TarifEcoTest
 
 `TarifEcoTest` verifies that the economy pricing policy keeps the base price unchanged.
 
-#### TarifBusinessTest
+### TarifBusinessTest
 
 `TarifBusinessTest` verifies that the business pricing policy increases the base price by 50%.
 
-#### TarifPromoTest
+### TarifPromoTest
 
 `TarifPromoTest` verifies that the promotional pricing policy applies a 20% discount.
 
-#### ReservationFactoryTest
+### ReservationFactoryTest
 
-`ReservationFactoryTest` verifies that `ReservationFactory` correctly applies pricing policies.
+`ReservationFactoryTest` verifies that `ReservationFactory` correctly applies pricing policies and validates reservation creation inputs.
 
 It checks that:
 
 - creating a reservation with `TarifEco` keeps the base price unchanged;
 - creating a reservation with `TarifBusiness` increases the price by 50%;
-- creating a reservation with `TarifPromo` applies a 20% discount.
+- creating a reservation with `TarifPromo` applies a 20% discount;
+- creating a reservation with a negative base price is rejected;
+- creating a reservation with a null pricing policy is rejected.
