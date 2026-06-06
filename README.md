@@ -1,25 +1,41 @@
-# Roman Numbers & Flight Management
+# Java Flight Management & Roman Numbers
 
-**Génie Logiciel L3 - TP3/TP4**
+Two Java software engineering projects focused on object-oriented design, unit testing, validation, and design patterns.
 
-This repository contains two Java projects developed for the L3 Software Engineering course.  
+## Projects
 
-- [TP3- Roman Numbers](/Roman-Numbers/README.md) : A converter between Roman and Arabic numbers, with unit testing and validation.
+### Flight and Reservation Management
 
-- [TP4 - Flight and Reservation Management](/FlightManagement/README.md) : A flight and reservation management system modeling airlines, flights, airports, stopovers, passengers, payments, pricing strategies and reservation states.
+A flight and reservation management system modeling airlines, flights, airports, stopovers, passengers, payments, pricing strategies, and reservation states.
 
----
+Key aspects:
 
-### Developers
+* Object-oriented domain modeling
+* Reservation lifecycle and state management
+* Pricing strategy implementation
+* Payment and passenger management
+* Unit testing with JUnit 5
 
-- [Erkin Tunc BOYA](https://github.com/ErkinTunc)
-- [Nasandratriniavo RAKOTOARISOA](https://github.com/nasarak23)
+[View project README](/FlightManagement/README.md)
 
----
+### Roman Numbers Converter
 
-### What we have learned
+A converter between Roman and Arabic numbers with input validation and unit tests.
 
-- How to use _Gradle_ for building, running and testing Java applications.
-- How to write unit tests using _JUnit 5_.
-- How to design and implement a Java application using _OOP principles_,
-  _design patterns_ and best practices.
+Key aspects:
+
+* Roman/Arabic number conversion
+* Input validation
+* Edge-case handling
+* Unit testing with JUnit 5
+
+[View project README](/Roman-Numbers/README.md)
+
+## Tech Stack
+
+Java · Gradle · JUnit 5 · Object-Oriented Programming · Design Patterns
+
+## Developers
+
+* [Erkin Tunc BOYA](https://github.com/ErkinTunc)
+* [Nasandratriniavo RAKOTOARISOA](https://github.com/nasarak23)
